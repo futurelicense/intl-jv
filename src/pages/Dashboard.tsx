@@ -8,9 +8,11 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { TrendingUp, Wallet, Users, Bell, MessageSquare, Shield, Link as LinkIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  
   const [user] = useState({
     name: 'Alexander Thompson',
     totalInvested: 2500000,
@@ -61,6 +63,14 @@ const Dashboard = () => {
       verified: true
     }
   ];
+
+  const handleViewDetails = (investmentId: number) => {
+    navigate(`/property/${investmentId}`);
+  };
+
+  const handleInvestNow = (opportunityId: number) => {
+    navigate(`/property/${opportunityId}`);
+  };
 
   return (
     <div className="min-h-screen bg-navy-950">
@@ -213,7 +223,10 @@ const Dashboard = () => {
                         {investment.status}
                       </span>
                       <div>
-                        <Button className="bg-gold-500 hover:bg-gold-600 text-navy-950">
+                        <Button 
+                          className="bg-gold-500 hover:bg-gold-600 text-navy-950"
+                          onClick={() => handleViewDetails(investment.id)}
+                        >
                           View Details
                         </Button>
                       </div>
@@ -265,7 +278,10 @@ const Dashboard = () => {
                     </div>
                     
                     <div className="text-right">
-                      <Button className="bg-gold-500 hover:bg-gold-600 text-navy-950">
+                      <Button 
+                        className="bg-gold-500 hover:bg-gold-600 text-navy-950"
+                        onClick={() => handleInvestNow(opportunity.id)}
+                      >
                         Invest Now
                       </Button>
                     </div>

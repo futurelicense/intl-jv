@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -58,6 +57,12 @@ const BlockchainTracker = () => {
     ));
     
     setIsRefreshing(false);
+  };
+
+  const handleViewTransaction = (hash: string) => {
+    // Open transaction in blockchain explorer (Etherscan for example)
+    const explorerUrl = `https://etherscan.io/tx/${hash}`;
+    window.open(explorerUrl, '_blank');
   };
 
   const getStatusIcon = (status: string) => {
@@ -156,6 +161,7 @@ const BlockchainTracker = () => {
                     variant="ghost" 
                     size="sm"
                     className="text-gold-400 hover:text-gold-300"
+                    onClick={() => handleViewTransaction(tx.hash)}
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Button>
