@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import BlockchainTracker from '@/components/BlockchainTracker';
 import KYCVerification from '@/components/KYCVerification';
 import MessagingSystem from '@/components/MessagingSystem';
+import PortfolioChart from '@/components/PortfolioChart';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -287,12 +288,7 @@ const Dashboard = () => {
           </TabsContent>
 
           <TabsContent value="portfolio" className="mt-6">
-            <Card className="glass-effect p-6">
-              <h3 className="text-xl font-semibold text-slate-50 mb-4">Portfolio Performance</h3>
-              <div className="h-64 flex items-center justify-center border border-navy-700 rounded-lg">
-                <p className="text-slate-400">Portfolio analytics chart would go here</p>
-              </div>
-            </Card>
+            <PortfolioChart />
           </TabsContent>
         </Tabs>
       </div>
