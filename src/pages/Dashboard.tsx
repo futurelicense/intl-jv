@@ -1,10 +1,13 @@
-
 import { useState } from 'react';
 import Header from '@/components/Header';
+import BlockchainTracker from '@/components/BlockchainTracker';
+import KYCVerification from '@/components/KYCVerification';
+import MessagingSystem from '@/components/MessagingSystem';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { TrendingUp, Wallet, Users, Bell } from 'lucide-react';
+import { TrendingUp, Wallet, Users, Bell, MessageSquare, Shield, Link as LinkIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const [user] = useState({
@@ -12,7 +15,8 @@ const Dashboard = () => {
     totalInvested: 2500000,
     currentValue: 2847500,
     activeInvestments: 5,
-    returns: 13.9
+    returns: 13.9,
+    kycStatus: 'verified' // verified, pending, rejected
   });
 
   const investments = [
@@ -122,12 +126,52 @@ const Dashboard = () => {
           </Card>
         </div>
 
+        {/* Quick Actions */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <Link to="/properties">
+            <Card className="glass-effect p-4 hover:bg-white/10 transition-colors cursor-pointer">
+              <div className="flex items-center space-x-3">
+                <LinkIcon className="h-6 w-6 text-gold-500" />
+                <div>
+                  <h3 className="font-medium text-slate-50">Browse Properties</h3>
+                  <p className="text-sm text-slate-400">Explore new investment opportunities</p>
+                </div>
+              </div>
+            </Card>
+          </Link>
+
+          <Card className="glass-effect p-4 hover:bg-white/10 transition-colors cursor-pointer">
+            <div className="flex items-center space-x-3">
+              <MessageSquare className="h-6 w-6 text-blue-500" />
+              <div>
+                <h3 className="font-medium text-slate-50">Messages</h3>
+                <p className="text-sm text-slate-400">Chat with developers and support</p>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="glass-effect p-4 hover:bg-white/10 transition-colors cursor-pointer">
+            <div className="flex items-center space-x-3">
+              <Shield className="h-6 w-6 text-green-500" />
+              <div>
+                <h3 className="font-medium text-slate-50">KYC Status</h3>
+                <p className="text-sm text-slate-400">
+                  {user.kycStatus === 'verified' ? 'Verified' : 'Complete verification'}
+                </p>
+              </div>
+            </div>
+          </Card>
+        </div>
+
         {/* Main Content */}
         <Tabs defaultValue="investments" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 bg-navy-800">
+          <TabsList className="grid w-full grid-cols-6 bg-navy-800">
             <TabsTrigger value="investments" className="text-slate-300">My Investments</TabsTrigger>
-            <TabsTrigger value="opportunities" className="text-slate-300">New Opportunities</TabsTrigger>
-            <TabsTrigger value="portfolio" className="text-slate-300">Portfolio Analysis</TabsTrigger>
+            <TabsTrigger value="opportunities" className="text-slate-300">Opportunities</TabsTrigger>
+            <TabsTrigger value="blockchain" className="text-slate-300">Blockchain</TabsTrigger>
+            <TabsTrigger value="kyc" className="text-slate-300">KYC</TabsTrigger>
+            <TabsTrigger value="messages" className="text-slate-300">Messages</TabsTrigger>
+            <TabsTrigger value="portfolio" className="text-slate-300">Analytics</TabsTrigger>
           </TabsList>
 
           <TabsContent value="investments" className="mt-6">
@@ -228,6 +272,18 @@ const Dashboard = () => {
                 </Card>
               ))}
             </div>
+          </TabsContent>
+
+          <TabsContent value="blockchain" className="mt-6">
+            <BlockchainTracker />
+          </TabsContent>
+
+          <TabsContent value="kyc" className="mt-6">
+            <KYCVerification />
+          </TabsContent>
+
+          <TabsContent value="messages" className="mt-6">
+            <MessagingSystem />
           </TabsContent>
 
           <TabsContent value="portfolio" className="mt-6">
