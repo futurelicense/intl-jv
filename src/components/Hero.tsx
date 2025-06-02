@@ -1,89 +1,80 @@
 
 import { Button } from '@/components/ui/button';
-import { Shield, TrendingUp, Users } from 'lucide-react';
+import { TrendingUp, Shield, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800" />
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gold-500/5 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl animate-pulse delay-1000" />
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-navy-950">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(212,175,55,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(212,175,55,0.05),transparent_50%)]" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 text-center">
-        <div className="max-w-4xl mx-auto animate-fade-up">
-          {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-gold-500/10 border border-gold-500/20 rounded-full px-4 py-2 mb-8">
-            <Shield className="h-4 w-4 text-gold-400" />
-            <span className="text-gold-400 text-sm font-medium">Blockchain-Secured Real Estate Investment</span>
-          </div>
-
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center max-w-4xl mx-auto">
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-white">Exclusive Real Estate</span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            <span className="text-slate-50">Premium Real Estate</span>
             <br />
             <span className="gradient-text">Joint Ventures</span>
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Connect with high-net-worth investors and elite developers in Lagos through 
-            our blockchain-powered platform for secure, transparent, and profitable real estate investments.
+          {/* Subtitle */}
+          <p className="text-xl md:text-2xl text-slate-300 mb-8 leading-relaxed">
+            Connect with high-net-worth investors for secure, blockchain-powered 
+            real estate opportunities in Lagos. Exclusive access to verified projects 
+            with guaranteed returns.
           </p>
 
-          {/* Stats */}
-          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-12 mb-12">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gold-400">$2.5B+</div>
-              <div className="text-slate-400">Assets Under Management</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gold-400">500+</div>
-              <div className="text-slate-400">Verified Investors</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-gold-400">98%</div>
-              <div className="text-slate-400">Success Rate</div>
-            </div>
-          </div>
-
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Link to="/auth">
+              <Button className="bg-gold-500 hover:bg-gold-600 text-navy-950 font-semibold px-8 py-6 text-lg">
+                Start Investing
+              </Button>
+            </Link>
             <Button 
-              size="lg" 
-              className="bg-gold-500 hover:bg-gold-600 text-navy-950 font-semibold px-8 py-4 text-lg"
-            >
-              Start Investing
-            </Button>
-            <Button 
-              size="lg" 
               variant="outline" 
-              className="border-gold-500/30 text-gold-400 hover:bg-gold-500/10 px-8 py-4 text-lg"
+              className="border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-navy-950 px-8 py-6 text-lg"
             >
               View Opportunities
             </Button>
           </div>
 
           {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-8 mt-12 text-slate-400">
-            <div className="flex items-center space-x-2">
-              <Shield className="h-4 w-4" />
-              <span className="text-sm">SEC Compliant</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
+            <div className="flex flex-col items-center p-6 glass-effect rounded-lg">
+              <TrendingUp className="h-12 w-12 text-gold-500 mb-4" />
+              <h3 className="text-2xl font-bold text-slate-50 mb-2">$50M+</h3>
+              <p className="text-slate-400">Total Investments</p>
             </div>
-            <div className="flex items-center space-x-2">
-              <TrendingUp className="h-4 w-4" />
-              <span className="text-sm">Blockchain Verified</span>
+
+            <div className="flex flex-col items-center p-6 glass-effect rounded-lg">
+              <Shield className="h-12 w-12 text-gold-500 mb-4" />
+              <h3 className="text-2xl font-bold text-slate-50 mb-2">100%</h3>
+              <p className="text-slate-400">Blockchain Secured</p>
             </div>
-            <div className="flex items-center space-x-2">
-              <Users className="h-4 w-4" />
-              <span className="text-sm">Institutional Grade</span>
+
+            <div className="flex flex-col items-center p-6 glass-effect rounded-lg">
+              <Users className="h-12 w-12 text-gold-500 mb-4" />
+              <h3 className="text-2xl font-bold text-slate-50 mb-2">500+</h3>
+              <p className="text-slate-400">Active Investors</p>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Animated Elements */}
+      <div className="absolute top-20 left-10 animate-pulse">
+        <div className="h-2 w-2 bg-gold-500 rounded-full opacity-60" />
+      </div>
+      <div className="absolute bottom-20 right-10 animate-pulse delay-1000">
+        <div className="h-3 w-3 bg-gold-400 rounded-full opacity-40" />
+      </div>
+      <div className="absolute top-1/2 left-5 animate-pulse delay-500">
+        <div className="h-1 w-1 bg-gold-600 rounded-full opacity-80" />
       </div>
     </section>
   );
