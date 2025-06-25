@@ -4,27 +4,49 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Shield, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Auth = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'demo@intljv.com',
+    password: 'demo123',
     confirmPassword: '',
     firstName: '',
     lastName: '',
     investorType: 'individual'
   });
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle authentication logic here
     console.log('Auth form submitted:', formData);
+    
+    // Demo login logic
+    if (isLogin) {
+      if (formData.email === 'demo@intljv.com' && formData.password === 'demo123') {
+        console.log('Demo login successful');
+        navigate('/dashboard');
+      } else {
+        alert('Please use demo credentials:\nEmail: demo@intljv.com\nPassword: demo123');
+      }
+    } else {
+      // For demo purposes, allow any registration
+      console.log('Demo registration successful');
+      navigate('/dashboard');
+    }
   };
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleDemoLogin = () => {
+    setFormData(prev => ({
+      ...prev,
+      email: 'demo@intljv.com',
+      password: 'demo123'
+    }));
   };
 
   return (
@@ -52,6 +74,23 @@ const Auth = () => {
               }
             </p>
           </div>
+
+          {isLogin && (
+            <div className="mb-6 p-4 bg-gold-500/10 border border-gold-500/20 rounded-lg">
+              <p className="text-sm text-gold-400 mb-2">Demo Login Credentials:</p>
+              <p className="text-xs text-slate-300">Email: demo@intljv.com</p>
+              <p className="text-xs text-slate-300">Password: demo123</p>
+              <Button 
+                type="button"
+                onClick={handleDemoLogin}
+                variant="outline"
+                size="sm"
+                className="mt-2 text-xs border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-navy-950"
+              >
+                Fill Demo Credentials
+              </Button>
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {!isLogin && (

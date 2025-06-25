@@ -35,12 +35,14 @@ const Hero = () => {
                 Start Investing
               </Button>
             </Link>
-            <Button 
-              variant="outline" 
-              className="border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-navy-950 px-8 py-6 text-lg"
-            >
-              View Opportunities
-            </Button>
+            <Link to="/properties">
+              <Button 
+                variant="outline" 
+                className="border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-navy-950 px-8 py-6 text-lg"
+              >
+                View Opportunities
+              </Button>
+            </Link>
           </div>
 
           {/* Trust Indicators */}
