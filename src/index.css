@@ -5,44 +5,44 @@
 
 @layer base {
   :root {
-    --background: 11 20 38;
-    --foreground: 248 250 252;
+    --background: 6 12 25;
+    --foreground: 255 255 255;
 
     --card: 15 23 42;
-    --card-foreground: 248 250 252;
+    --card-foreground: 255 255 255;
 
     --popover: 15 23 42;
-    --popover-foreground: 248 250 252;
+    --popover-foreground: 255 255 255;
 
-    --primary: 212 175 55;
-    --primary-foreground: 11 20 38;
+    --primary: 79 172 254;
+    --primary-foreground: 6 12 25;
 
     --secondary: 30 41 59;
-    --secondary-foreground: 248 250 252;
+    --secondary-foreground: 255 255 255;
 
     --muted: 30 41 59;
     --muted-foreground: 148 163 184;
 
     --accent: 30 41 59;
-    --accent-foreground: 248 250 252;
+    --accent-foreground: 255 255 255;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 30 41 59;
     --input: 30 41 59;
-    --ring: 212 175 55;
+    --ring: 79 172 254;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 11 20 38;
-    --sidebar-foreground: 248 250 252;
-    --sidebar-primary: 212 175 55;
-    --sidebar-primary-foreground: 11 20 38;
+    --sidebar-background: 6 12 25;
+    --sidebar-foreground: 255 255 255;
+    --sidebar-primary: 79 172 254;
+    --sidebar-primary-foreground: 6 12 25;
     --sidebar-accent: 30 41 59;
-    --sidebar-accent-foreground: 248 250 252;
+    --sidebar-accent-foreground: 255 255 255;
     --sidebar-border: 30 41 59;
-    --sidebar-ring: 212 175 55;
+    --sidebar-ring: 79 172 254;
   }
 }
 
@@ -52,8 +52,8 @@
   }
 
   body {
-    @apply bg-slate-900 text-slate-50 font-sans antialiased;
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    @apply bg-background text-foreground font-sans antialiased;
+    background: linear-gradient(135deg, rgb(6, 12, 25) 0%, rgb(15, 23, 42) 50%, rgb(6, 12, 25) 100%);
     background-attachment: fixed;
   }
 
@@ -64,11 +64,11 @@
 
 @layer components {
   .glass-effect {
-    @apply bg-slate-800/30 backdrop-blur-xl border border-slate-700/50;
+    @apply bg-slate-800/10 backdrop-blur-xl border border-slate-700/20;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent;
   }
 
   .shimmer-effect {
@@ -78,20 +78,20 @@
   }
 
   .premium-gradient {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #334155 75%, #1e293b 100%);
+    background: linear-gradient(135deg, rgb(15, 23, 42) 0%, rgb(51, 65, 85) 25%, rgb(71, 85, 105) 50%, rgb(51, 65, 85) 75%, rgb(15, 23, 42) 100%);
   }
 
-  .gold-gradient {
-    background: linear-gradient(135deg, #d4af37 0%, #fbbf24 50%, #d4af37 100%);
+  .blue-gradient {
+    background: linear-gradient(135deg, rgb(79, 172, 254) 0%, rgb(59, 130, 246) 50%, rgb(79, 172, 254) 100%);
   }
 }
 
 @keyframes shimmer {
-  '0%': {
-    background-position: '-200% 0';
+  0% {
+    background-position: -200% 0;
   }
-  '100%': {
-    background-position: '200% 0';
+  100% {
+    background-position: 200% 0;
   }
 }
 
@@ -104,6 +104,35 @@
   }
 }
 
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(79, 172, 254, 0.3); 
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(79, 172, 254, 0.6); 
+  }
+}
+
+@keyframes gradient-shift {
+  0% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+  100% { 
+    background-position: 0% 50%; 
+  }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-gradient-shift {
+  animation: gradient-shift 3s ease infinite;
 }
