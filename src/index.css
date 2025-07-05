@@ -52,7 +52,9 @@
   }
 
   body {
-    @apply bg-navy-950 text-slate-50 font-sans antialiased;
+    @apply bg-slate-900 text-slate-50 font-sans antialiased;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    background-attachment: fixed;
   }
 
   html {
@@ -62,11 +64,11 @@
 
 @layer components {
   .glass-effect {
-    @apply bg-white/5 backdrop-blur-md border border-white/10;
+    @apply bg-slate-800/30 backdrop-blur-xl border border-slate-700/50;
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600 bg-clip-text text-transparent;
   }
 
   .shimmer-effect {
@@ -74,4 +76,34 @@
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
+
+  .premium-gradient {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #475569 50%, #334155 75%, #1e293b 100%);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #d4af37 0%, #fbbf24 50%, #d4af37 100%);
+  }
+}
+
+@keyframes shimmer {
+  '0%': {
+    background-position: '-200% 0';
+  }
+  '100%': {
+    background-position: '200% 0';
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-20px); 
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }
